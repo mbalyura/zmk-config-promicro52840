@@ -1,0 +1,52 @@
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+	chosen {
+		zmk,kscan = &kscan0;
+		zmk,matrix_transform = &default_transform;
+	};
+
+	kscan0: kscan0 {
+		compatible = "zmk,kscan-gpio-direct";
+		input-gpios
+
+		//left side
+		// = <&gpio0 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D1   P0.06  |  a
+		// , <&gpio0 8  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D0   P0.08  |  b
+		= <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D2   P0.17  |  c
+		, <&gpio0 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D3   P0.20  |  d
+		, <&gpio0 22 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D4   P0.22  |  e
+		, <&gpio0 24 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D5   P0.24  |  f
+		, <&gpio1 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D6   P1.00  |  g
+		, <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D7   P0.11  |  h
+		, <&gpio1 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D8   P1.04  |  i
+		, <&gpio1 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D9   P1.06  |  j
+
+		//right side
+		, <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D21  P0.31  |  k
+		, <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D20  P0.29  |  l
+		, <&gpio0 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D19  P0.02  |  m
+		, <&gpio1 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D18  P1.15  |  n
+		, <&gpio1 13 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D15  P1.13  |  o
+		, <&gpio1 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D14  P1.11  |  p
+		, <&gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D16  P0.10  |  q
+		, <&gpio0 9  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>// D10  P0.09  |  r
+
+		//additional pins
+		, <&gpio1 1  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>//      P1.01  |  s
+		, <&gpio1 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>//      P1.02  |  t
+		, <&gpio1 7  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>//      P1.07  |  u
+		;
+	};
+
+	default_transform: keymap_transform_0 {
+		compatible = "zmk,matrix-transform";
+		columns = <21>;
+		rows = <1>;
+		map = <
+		RC(0,0)  RC(0,1)  RC(0,2)  RC(0,3)  RC(0,4)  RC(0,5)  RC(0,6)  RC(0,7)  RC(0,8)  RC(0,9)
+		RC(0,10) RC(0,11) RC(0,12) RC(0,13) RC(0,14) RC(0,15) RC(0,16) RC(0,17)
+		RC(0,18) RC(0,19) RC(0,20)
+		>;
+	};
+};
