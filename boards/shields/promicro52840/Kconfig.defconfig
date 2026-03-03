@@ -9,7 +9,7 @@ config ZMK_USB
 config GPIO
 	default y
 
-config ZMK_KSAN_DIRECT_POLLING
+config ZMK_KSCAN_DIRECT_POLLING
 	bool "Enable direct polling for kscan"
 	default y
 
